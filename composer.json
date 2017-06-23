@@ -26,6 +26,8 @@
         "dvizh/yii2-seo": "*",
         "dvizh/yii2-filter": "*",
         "dvizh/yii2-field": "*",
+        "dvizh/yii2-cart": "*",
+        "dvizh/yii2-order": "*",
         "kartik-v/yii2-grid": "*",
         "dvizh/yii2-relations": "*",
         "voskobovich/yii2-many-many-behavior": "^3.0",
