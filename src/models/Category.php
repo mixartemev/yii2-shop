@@ -101,6 +101,26 @@ class Category extends \yii\db\ActiveRecord
         return $return;
     }
 
+    public static function childList($id = null, $ban = [])
+    {
+        $return = [];
+
+        $categories = Category::find()
+            ->select('id')
+            ->where(['parent_id' => $id])
+            ->orderBy('sort DESC')
+            ->asArray()->all();
+
+        foreach($categories as $category) {
+            if(!in_array($category['id'], $ban)) {
+                $return[$category['id']] = $category['id'];
+                $return += self::childList($category['id'], $ban);
+            }
+        }
+
+        return $return;
+    }
+    
     public function getProducts()
     {
         return $this->hasMany(Product::className(), ['id' => 'product_id'])
